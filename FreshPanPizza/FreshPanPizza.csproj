@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <Folder Include="Views\Shared\PizzaCustomLayouts\" />
-    <Folder Include="wwwroot\assets\images\PizzaPhotos\" />
   </ItemGroup>
 
   <ItemGroup>

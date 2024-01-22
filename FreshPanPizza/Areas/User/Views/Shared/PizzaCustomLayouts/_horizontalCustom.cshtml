@@ -1,23 +1,23 @@
-﻿<header id="page-topbar" style="background: linear-gradient(-225deg, rgb(82, 113, 196) 0%, rgb(177, 159, 255) 48%, rgb(236, 161, 254) 100%);">
+﻿<header id="page-topbar" style="background:#5872c1">
     <div class="navbar-header">
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
                 <a href=@Url.Action("Index", "Dashboard") class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="~/assets/images/logo.svg" alt="" height="22">
+                        <img src="~/assets/images/pizzalogo/logo.png" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="~/assets/images/logo-dark.png" alt="" height="17">
+                        <img src="~/assets/images/pizzalogo/dark_logo.png" alt="" height="17">
                     </span>
                 </a>
 
                 <a href=@Url.Action("Index", "Dashboard") class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="~/assets/images/logo-light.svg" alt="" height="22">
+                        <img src="~/assets/images/pizzalogo/logo.png" alt="" height="35">
                     </span>
                     <span class="logo-lg">
-                        <img src="~/assets/images/logo-light.png" alt="" height="19">
+                        <img src="~/assets/images/pizzalogo/white_logo.png" alt="" height="35px">
                     </span>
                 </a>
             </div>
@@ -253,7 +253,7 @@
                     <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Settings</span></a>
                     <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Lock screen</span></a> *@
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="#"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
+                    <a class="dropdown-item text-danger" Asp-area="" asp-controller="Account" asp-action="LogOut"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
                 </div>
             </div>
 
@@ -319,75 +319,6 @@
         </nav>
     </div>
 </div>
-
-<style>
-    a {
-        outline: none;
-    }
-
-    .navbar-container {
-        text-align: center;
-        background-color: #009688;
-        box-shadow: 0px -20px 5px 20px #333333;
-        padding: 10px;
-        font-size: 0;
-    }
-
-        .navbar-container ul {
-            margin: 0;
-            padding: 0;
-            text-align: right;
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-            .navbar-container ul li {
-                display: inline-block;
-                font-size: 16px;
-            }
-
-                .navbar-container ul li a {
-                    color: #ffffff;
-                    text-decoration: none;
-                    display: inline-block;
-                    padding: 10px;
-                    transition: color 0.5s;
-                }
-
-                .navbar-container ul li .underline {
-                    height: 3px;
-                    background-color: transparent;
-                    width: 0%;
-                    transition: width 0.2s, background-color 0.5s;
-                    margin: 0 auto;
-                }
-
-                .navbar-container ul li.active-link .underline {
-                    width: 100%;
-                    background-color: white;
-                }
-
-                .navbar-container ul li:hover .underline {
-                    background-color: white;
-                    width: 100%;
-                }
-
-                .navbar-container ul li:hover a {
-                }
-
-                .navbar-container ul li:active a {
-                    transition: none;
-                    color: rgba(255,255,255,0.76);
-                }
-
-                .navbar-container ul li:active .underline {
-                    transition: none;
-                    background-color: rgba(255,255,255,0.76);
-                }
-</style>
-
-
-
 
 
 @section scripts {
