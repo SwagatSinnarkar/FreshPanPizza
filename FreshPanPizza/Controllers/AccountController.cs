@@ -92,5 +92,11 @@ namespace FreshPanPizza.Controllers
         {
             return View();
         }
+
+        //Public Dashboard Main
+        public IActionResult MainDashboard()
+        {
+            return View();
+        }
     }
 }

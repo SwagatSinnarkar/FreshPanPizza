@@ -1,0 +1,212 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    ViewBag.pTitle = "Menu";
+    ViewBag.pageTitle = "Dashboard";
+    Layout = "~/Views/Shared/Layouts/_layout_hprozontal_boxed_custom.cshtml";
+}
+
+
+<div id="preloader">
+    <div id="status">
+        <div class="spinner-chase">
+            <div class="chase-dot"></div>
+            <div class="chase-dot"></div>
+            <div class="chase-dot"></div>
+            <div class="chase-dot"></div>
+            <div class="chase-dot"></div>
+            <div class="chase-dot"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="~/assets/images/pizzaphotos/img8.jpg" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Veg Parcel</h5>
+                    <p><i>Snacky bites! Pizza rolls with paneer & creamy harissa sauce.</i></p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="~/assets/images/pizzaphotos/img9.jpg" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Chicken Keema Paratha Pizza</h5>
+                    <p><i>Flavourful & meaty chicken keema paratha and goodness of cheesy pizza coming together in an epic crossover!</i></p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="~/assets/images/pizzaphotos/img10.png" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Paneer Tikka Stuffed Garlic Bread</h5>
+                    <p><i>Freshly Baked Stuffed Garlic Bread with Cheese, Onion and Paneer Tikka fillings. Comes with a dash of Basil.</i></p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card">
+            <img class="card-img-top img-fluid" src="~/assets/images/pizzaphotos/img1.jpeg" alt="Blazing Onion & Paprika">
+            <div class="card-body">
+                <h4 class="card-title">Blazing Onion & Paprika <img src="~/assets/images/pizzaphotos/v.png" width="15px" height="15px"></h4>
+                <p class="card-text">
+                    <i>
+                        This is the Hot & spicy pizza with onion & red paprika
+                        toppings and a new spicy peri peri sauce on a Domino's
+                        cheesy base.
+                    </i>
+                </p>
+                <p class="card-text">
+                    <small class="text-muted">Regular/Med/Large size</small>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Chicken Dominator <img src="~/assets/images/pizzaphotos/nv.png" width="15px" height="15px"></h4>
+                <p class="card-text">
+                    <i>
+                        Loaded with double pepper barbecue chicken,
+                        peri-peri chicken, chicken tikka & grilled chicken
+                        mouth watering delicious pizza.
+                    </i>
+                </p>
+                <p class="card-text">
+                    <small class="text-muted">Regular/Med/Large size</small>
+                </p>
+            </div>
+            <img class="card-img-bottom img-fluid" src="~/assets/images/pizzaphotos/img3.jpg" alt="Chicken Dominator ">
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card">
+            <img class="card-img-top img-fluid" src="~/assets/images/pizzaphotos/img2.jpg" alt="Peppy Paneer">
+            <div class="card-body">
+                <h4 class="card-title">Peppy Paneer <img src="~/assets/images/pizzaphotos/v.png" width="15px" height="15px"></h4>
+                <p class="card-text">
+                    <i>
+                        Flavorful trio of juicy paneer, crisp capsicum with
+                        spicy red paprika, Melted Cheese, Pleasing Please,
+                        so classy, Dough It Right, Every Bite.
+                    </i>
+                </p>
+                <p class="card-text">
+                    <small class="text-muted">Regular/Med/Large size</small>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="row no-gutters align-items-center">
+                <div class="col-md-4">
+                    <img class="card-img img-fluid" src="~/assets/images/pizzaphotos/img4.jpg" alt="Mirinda">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Classic Stuffed Garlic Bread <img src="~/assets/images/pizzaphotos/v.png" width="15px" height="15px"></h5>
+                        <p class="card-text"><i>Freshly baked garlic bread with cheese, juicy corn & tangy jalapeno.</i></p>
+                        <p class="card-text"><small class="text-muted">Regular size</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="row no-gutters align-items-center">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Mirinda <img src="~/assets/images/pizzaphotos/v.png" width="15px" height="15px"></h5>
+                        <p class="card-text"><i>Delicious Orange Flavoured beverage.</i></p>
+                        <p class="card-text"><small class="text-muted"> 475ml</small></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img class="card-img img-fluid" src="~/assets/images/pizzaphotos/img5.jpg" alt="Mirinda">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="row no-gutters align-items-center">
+                <div class="col-md-4">
+                    <img class="card-img img-fluid" src="~/assets/images/pizzaphotos/img6.jpg" alt="Card image">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Spicy Baked Chicken Wings <img src="~/assets/images/pizzaphotos/nv.png" width="15px" height="15px">
+                        </h5>
+                        <p class="card-text">
+                            <i>Crisp, roasted chicken wings in classic hot sauce and peri-peri flavour.</i>
+                        </p>
+                        <p class="card-text"><small class="text-muted">Hot & spicy</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="row no-gutters align-items-center">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Spicy Schezwan Chicken Pasta <img src="~/assets/images/pizzaphotos/nv.png" width="15px" height="15px"></h5>
+                        <p class="card-text"><i>Spicy Schezwan sauce pasta with schezwan chicken meatballs, onion, green capsicum & red capsicum.</i></p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                Mild
+                            </small>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img class="card-img img-fluid" src="~/assets/images/pizzaphotos/img7.jpg" alt="Card image">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end row -->
+@section scripts {
+    <script src="/assets/js/pages/dashboard.init.js"></script>
+    <script src="/assets/js/app.js"></script>
+}
