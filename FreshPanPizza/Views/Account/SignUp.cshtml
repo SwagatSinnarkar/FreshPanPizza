@@ -6,106 +6,108 @@
 }
 
 <body style="background-color:#cdc1ff; background-image: linear-gradient(316deg, #cdc1ff 0%, #e5d9f2 74%);">
-<div class="account-pages my-5 pt-sm-5">
-    @* #E6E6FA *@
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6 col-xl-5">
-                <div class="card overflow-hidden">
-                    <div class="bg-primary-subtle">
-                        <div class="row">
-                            <div class="col-7">
-                                <div class="text-primary p-4">
-                                    <h5 class="text-primary">Have a Sign Up!</h5>
-                                    <p>Get your free Fresh Pan Pizza account now.</p>
-                                </div>
-                            </div>
-                            <div class="col-5 align-self-end">
-                                <img src="~/assets/images/profile-img.png" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body pt-0">
-                        <div>
-                            <div class="avatar-md profile-user-wid mb-4">
-                                <span class="avatar-title rounded-circle bg-light">
-                                    <img src="~/assets/images/pizzalogo/logo_pizza_black.png" class="rounded-circle" height="120px;" width="120px;">
-                                </span>
-                            </div>
-                        </div>
-                        <div class="p-2">
-                            <form asp-action="SignUp">
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                <div class="mb-3">
-                                    <label asp-for="Name" class="form-label"></label>
-                                    <input asp-for="Name" class="form-control" />
-                                    <span asp-validation-for="Name" class="text-danger"></span>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label asp-for="Email" class="form-label"></label>
-                                    <input asp-for="Email" class="form-control" type="email" />
-                                    <span asp-validation-for="Email" class="text-danger"></span>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label asp-for="PhoneNumber" class="form-label"></label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">+91</span>
-                                        <input asp-for="PhoneNumber" class="form-control bfh-phone" onkeypress="return isNumberKey(event)" maxlength="10" />
+    <div class="account-pages my-5 pt-sm-5">
+        @* #E6E6FA *@
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="card overflow-hidden">
+                        <div class="bg-primary-subtle">
+                            <div class="row">
+                                <div class="col-7">
+                                    <div class="text-primary p-4">
+                                        <h5 class="text-primary">Have a Sign Up!</h5>
+                                        <p>Get your free Fresh Pan Pizza account now.</p>
                                     </div>
-                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                                 </div>
-
-                                <div class="mb-3">
-                                    <label asp-for="Password" class="form-label"></label>
-                                    <input type="password" asp-for="Password" class="form-control" />
-                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                <div class="col-5 align-self-end">
+                                    <img src="~/assets/images/profile-img.png" alt="" class="img-fluid">
                                 </div>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div>
+                                <a href=@Url.Action("MainDashboard", "Account")>
+                                    <div class="avatar-md profile-user-wid mb-4">
+                                        <span class="avatar-title rounded-circle bg-light">
+                                            <img src="~/assets/images/pizzalogo/logo.png" class="rounded-circle" height="60px;">
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="p-2">
+                                <form asp-action="SignUp">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="mb-3">
+                                        <label asp-for="Name" class="form-label"></label>
+                                        <input asp-for="Name" class="form-control" />
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                    </div>
 
-                                <div class="mb-3">
-                                    <label asp-for="ConfirmPassword" class="form-label"></label>
-                                    <input type="password" asp-for="ConfirmPassword" class="form-control" />
-                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                                </div>
+                                    <div class="mb-3">
+                                        <label asp-for="Email" class="form-label"></label>
+                                        <input asp-for="Email" class="form-control" type="email" />
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
 
-                                <div class="mt-4 d-grid">
-                                    <input type="submit" value="Sign Up" class="btn btn-primary waves-effect waves-light" />
-                                </div>
+                                    <div class="mb-3">
+                                        <label asp-for="PhoneNumber" class="form-label"></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">+91</span>
+                                            <input asp-for="PhoneNumber" class="form-control bfh-phone" onkeypress="return isNumberKey(event)" maxlength="10" />
+                                        </div>
+                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                    </div>
 
-                                <div class="mt-4 text-center">
-                                    <h5 class="font-size-14 mb-3">Sign up using</h5>
+                                    <div class="mb-3">
+                                        <label asp-for="Password" class="form-label"></label>
+                                        <input type="password" asp-for="Password" class="form-control" />
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
 
-                                    <ul class="list-inline">                                       
-                                        <li class="list-inline-item">
-                                            <a href="javascript::void()" class="social-list-item bg-danger text-white border-danger">
-                                                <i class="mdi mdi-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                    <div class="mb-3">
+                                        <label asp-for="ConfirmPassword" class="form-label"></label>
+                                        <input type="password" asp-for="ConfirmPassword" class="form-control" />
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                    </div>
 
-                            </form>
+                                    <div class="mt-4 d-grid">
+                                        <input type="submit" value="Sign Up" class="btn btn-primary waves-effect waves-light" />
+                                    </div>
+
+                                    <div class="mt-4 text-center">
+                                        <h5 class="font-size-14 mb-3">Sign up using</h5>
+
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a href="javascript::void()" class="social-list-item bg-danger text-white border-danger">
+                                                    <i class="mdi mdi-google"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="mt-5 text-center">
+                    <div class="mt-5 text-center">
 
-                    <div>
-                        @* <p>Already have an account ? <a href=@Url.Action("Login", "Auth") class="fw-medium text-primary"> Login</a></p> *@
-                        <p>
-                            Already have an account ? <a asp-action="Login" class="fw-medium text-primary"> Login</a>
-                        </p>
-                        <p>
-                            ©
-                            <script>document.write(new Date().getFullYear())</script> Fresh Pan Pizza. Crafted with <i class="mdi mdi-heart text-danger"></i> by Swagat
-                        </p>
+                        <div>
+                            @* <p>Already have an account ? <a href=@Url.Action("Login", "Auth") class="fw-medium text-primary"> Login</a></p> *@
+                            <p>
+                                Already have an account ? <a asp-action="Login" class="fw-medium text-primary"> Login</a>
+                            </p>
+                            <p>
+                                ©
+                                <script>document.write(new Date().getFullYear())</script> Fresh Pan Pizza. Crafted with <i class="mdi mdi-heart text-danger"></i> by Swagat
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 
 @section Scripts {
