@@ -12,10 +12,17 @@ namespace FreshPanPizza.Areas.Admin.Controllers
                 _catalogService = catalogService;
         }
 
+        //Item List Show
         public IActionResult Index()
         {
             var data = _catalogService.GetItems();
             return View(data);
+        }
+
+        //Create Items
+        public IActionResult Create()
+        {           
+            return View();
         }
     }
 }

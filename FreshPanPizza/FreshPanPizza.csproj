@@ -16,4 +16,8 @@
     <ProjectReference Include="..\FreshPanPizza.Services\FreshPanPizza.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\assets\images\adminImagesCustom\" />
+  </ItemGroup>
+
 </Project>
