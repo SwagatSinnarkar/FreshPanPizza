@@ -4,6 +4,19 @@
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_BlankLayout.cshtml";
 }
+<div id="preloader">
+    <div id="status">
+        <div class="spinner-chase">
+            <div class="chase-dot"></div>
+            <div class="chase-dot"></div>
+            <div class="chase-dot"></div>
+            <div class="chase-dot"></div>
+            <div class="chase-dot"></div>
+            <div class="chase-dot"></div>
+        </div>
+    </div>
+</div>
+
 
 <body style="background-color:#cdc1ff; background-image: linear-gradient(316deg, #cdc1ff 0%, #e5d9f2 74%);">
     <div class="account-pages pt-sm-5 my-5">
@@ -27,11 +40,13 @@
                         </div>
                         <div class="card-body pt-0">
                             <div>
-                                <div class="avatar-md profile-user-wid mb-4">
-                                    <span class="avatar-title rounded-circle bg-light">
-                                        <img src="~/assets/images/pizzalogo/logo.png" class="rounded-circle" height="60px;">
-                                    </span>
-                                </div>
+                                <a href=@Url.Action("MainDashboard", "Account")>
+                                    <div class="avatar-md profile-user-wid mb-4">
+                                        <span class="avatar-title rounded-circle bg-light">
+                                            <img src="~/assets/images/pizzalogo/logo.png" class="rounded-circle" height="60px;">
+                                        </span>
+                                    </div>
+                                </a>
                             </div>
                             <div class="p-2">
                                 <form asp-action="Login">
@@ -78,7 +93,7 @@
                         <div>
                             @* <p>Already have an account ? <a href=@Url.Action("Login", "Auth") class="fw-medium text-primary"> Login</a></p> *@
                             <p>
-                                Already have an account ? <a asp-action="SignUp" class="fw-medium text-primary"> Sign up</a>
+                                Create an account ? <a asp-action="SignUp" class="fw-medium text-primary"> Sign up</a>
                             </p>
                             <p>
                                 ©
@@ -94,6 +109,8 @@
 
 @section Scripts {
     @{
+        <script src="/assets/js/app.js"></script>
+
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
         <script>
             function isNumberKey(evt) {
