@@ -17,6 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddTransient<IUserAccessor, UserAccessor>();
 builder.Services.AddTransient<ICatalogService, CatalogService>();
+builder.Services.AddTransient<IFileHelper, FileHelper>();
 
 //Connecting Database
 var connectionString = builder.Configuration.GetConnectionString("DBConnection");
