@@ -2,10 +2,13 @@ using FreshPanPizza.Entities;
 using FreshPanPizza.Helpers;
 using FreshPanPizza.Interfaces;
 using FreshPanPizza.Repositories;
+using FreshPanPizza.Repositories.Implementations;
+using FreshPanPizza.Repositories.Interfaces;
 using FreshPanPizza.Services.Implementations;
 using FreshPanPizza.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddTransient<IUserAccessor, UserAccessor>();
+builder.Services.AddTransient<ICatalogService, CatalogService>();
 
 //Connecting Database
 var connectionString = builder.Configuration.GetConnectionString("DBConnection");
@@ -24,6 +28,9 @@ builder.Services.AddDbContext<AppDBContext>((options) =>
 builder.Services.AddIdentity<User, Role>().AddEntityFrameworkStores<AppDBContext>().AddDefaultTokenProviders();
 builder.Services.AddScoped<DbContext, AppDBContext>();
 
+builder.Services.AddTransient<IRepository<Item>, Repository<Item>>();
+builder.Services.AddTransient<IRepository<Category>, Repository<Category>>();
+builder.Services.AddTransient<IRepository<ItemType>, Repository<ItemType>>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation(); ;
