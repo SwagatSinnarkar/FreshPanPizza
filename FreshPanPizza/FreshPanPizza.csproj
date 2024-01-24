@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\adminImagesCustom\" />
     <Folder Include="wwwroot\assets\images\adminImagesCustom\" />
   </ItemGroup>
 

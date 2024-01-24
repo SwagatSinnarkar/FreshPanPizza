@@ -4,6 +4,7 @@
     ViewBag.Title = Model != null ? "Edit" : "Create";
     ViewBag.pTitle = Model != null ? "Edit" : "Create";
     ViewBag.pageTitle = "Admin";
+    ViewBag.cardTitle = Model != null ? "Edit" : "Add";
     Layout = "~/Areas/Admin/Views/Shared/PizzaCustomLayouts/_LayoutPizzaCustom.cshtml";
 }
 
@@ -11,7 +12,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">Add items</h4>
+                <h4 class="card-title mb-4">@ViewBag.cardTitle items</h4>
 
                 <form asp-action="@ViewBag.Title" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -20,7 +21,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label asp-for="CategoryId" class="form-label"></label>
+                                <label asp-for="CategoryId" class="control-label"></label>
                                 <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.Categories,"Id","Name"))">
                                     <option value="">Select</option>
                                 </select>
@@ -29,7 +30,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label asp-for="ItemTypeId" class="form-label"></label>
+                                <label asp-for="ItemTypeId" class="control-label"></label>
                                 <select asp-for="ItemTypeId" class="form-control" asp-items="@(new SelectList(ViewBag.ItemTypes,"Id","Name"))">
                                     <option value="">Select</option>
                                 </select>
@@ -41,14 +42,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label asp-for="Name" class="form-label"></label>
+                                <label asp-for="Name" class="control-label"></label>
                                 <input asp-for="Name" class="form-control" placeholder="Enter Name" />
                                 <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label asp-for="UnitPrice" class="form-label"></label>
+                                <label asp-for="UnitPrice" class="control-label"></label>
                                 <input asp-for="UnitPrice" class="form-control" placeholder="Enter Price" onkeypress="return isNumberKey(event)" />
                                 <span asp-validation-for="UnitPrice" class="text-danger"></span>
                             </div>
@@ -58,25 +59,25 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="mb-3">
-                                <label asp-for="Description" class="form-label"></label>
-                                <input asp-for="Description" class="form-control" rows="2" cols="5" />
+                                <label asp-for="Description" class="control-label"></label>
+                                <input asp-for="Description" class="form-control" placeholder="Enter Price" />
                                 <span asp-validation-for="Description" class="text-danger"></span>
                             </div>
                         </div>
 
                         <div class="col-lg-6">
-                            <label asp-for="File" class="form-label"></label>
-                                <input type="file" asp-for="File" class="form-control" style="border:none;padding: .375rem 0;" />
-                                <span asp-validation-for="File" class="text-danger"></span>
-                                <br />
-                                @if (Model != null && !string.IsNullOrEmpty(Model.ImageUrl))
-                                {
-                                    <input type="hidden" asp-for="ImageUrl" />
-                                    <img id="itemImage" src="@Model.ImageUrl" height="150" width="150" style="border:1px solid" />
-                                }
-                            </div>                       
+                            <label asp-for="File" class="control-label"></label>
+                            <input type="file" asp-for="File" class="form-control" style="border:none;padding: .375rem 0;" />
+                            <span asp-validation-for="File" class="text-danger"></span>    
+                           <br/>
+                            @if (Model != null && !string.IsNullOrEmpty(Model.ImageUrl))
+                            {
+                                <input type="hidden" asp-for="ImageUrl" />
+                                <img id="itemImage" src="@Model.ImageUrl" height="150" width="150" style="border:1px solid" />
+                            }
+                        </div>
                     </div>
-                  
+                    <br />
                     <div>
                         <input type="submit" value="Save" class="btn btn-primary w-md" />
                         &nbsp; <a asp-action="Index" asp-controller="Item" class="btn btn-danger w-md">Cancel</a>
@@ -104,7 +105,7 @@
             }
         </script>
     }
-    
-    <script src="~/assets/js/pages/form-validation.init.js"></script>    
+
+@*     <script src="~/assets/js/pages/form-validation.init.js"></script> *@
     <script src="~/assets/js/app.js"></script>
 }

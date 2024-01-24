@@ -67,8 +67,8 @@
                                     <img src="@item.ImageUrl" style="width:100px" />
                                 </td>
                                 <td>
-                                    <i class="mdi mdi-pencil font-size-16 text-success me-1"></i>@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                    <i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i>@Html.ActionLink("Delete", "Delete", new { id = item.Id, url = item.ImageUrl })
+                                    @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "mdi mdi-pencil font-size-16 text-success me-1" })&nbsp;
+                                    @Html.ActionLink(" ", "Delete", new { id = item.Id, url = item.ImageUrl }, new { @class = "mdi mdi-trash-can font-size-16 text-danger me-1" })
                                 </td>
                             </tr>
                         }
