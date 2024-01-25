@@ -52,9 +52,12 @@ namespace FreshPanPizza.Services.Implementations
             return _itemRepo.Find(id);
         }
 
-        public IEnumerable<Item> GetItems()
+        public IEnumerable<Item> GetItems(int itemType)
         {
-            return _itemRepo.GetAll().OrderBy(item => item.CategoryId).ThenBy(item => item.ItemTypeId);   
+            IEnumerable<Item> items = _itemRepo.GetAll().OrderBy(item => item.CategoryId).ThenBy(item => item.ItemTypeId);
+            if (itemType != 0)
+                items = items.Where(x => x.ItemTypeId == itemType);
+            return items;   
         }
 
         public IEnumerable<ItemType> GetItemType()

@@ -21,7 +21,7 @@ namespace FreshPanPizza.Areas.Admin.Controllers
         //Item List Show
         public IActionResult Index()
         {
-            var data = _catalogService.GetItems();
+            var data = _catalogService.GetItems(0);
             return View(data);
         }
 
