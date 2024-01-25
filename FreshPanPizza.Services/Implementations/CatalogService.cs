@@ -3,6 +3,7 @@ using FreshPanPizza.Repositories.Interfaces;
 using FreshPanPizza.Services.Interfaces;
 using Microsoft.AspNetCore.Http.Features;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,7 +45,7 @@ namespace FreshPanPizza.Services.Implementations
 
         public IEnumerable<Category> GetCategories()
         {
-           return _categoryRepo.GetAll();
+            return _categoryRepo.GetAll();
         }
 
         public Item GetItem(int id)
@@ -52,12 +53,33 @@ namespace FreshPanPizza.Services.Implementations
             return _itemRepo.Find(id);
         }
 
-        public IEnumerable<Item> GetItems(int itemType)
-        {
+        public IEnumerable<Item> GetItems(int itemType, int categoryType)
+            {
             IEnumerable<Item> items = _itemRepo.GetAll().OrderBy(item => item.CategoryId).ThenBy(item => item.ItemTypeId);
-            if (itemType != 0)
-                items = items.Where(x => x.ItemTypeId == itemType);
-            return items;   
+
+
+            //For Pizza & Non-Veg Pizza
+            if (itemType == 1)
+            {
+                items = items.Where(x => x.ItemTypeId == itemType && x.ItemTypeId != 2 && x.CategoryId != 3 && x.CategoryId != 2);
+            }
+            else if (itemType == 2)
+            {
+                items = items.Where(x => x.ItemTypeId == itemType && x.ItemTypeId != 1 && x.CategoryId != 3 && x.CategoryId != 2);
+            }
+            else
+            {
+                //For Beverages & Sides
+                if (categoryType != 2)
+                {
+                    items = items.Where(x => x.CategoryId == categoryType);
+                }
+                else
+                {
+                    items = items.Where(x => x.CategoryId == categoryType);
+                }
+            }
+            return items;
         }
 
         public IEnumerable<ItemType> GetItemType()

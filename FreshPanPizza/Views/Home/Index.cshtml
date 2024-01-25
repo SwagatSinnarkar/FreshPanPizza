@@ -6,6 +6,22 @@
 }
 
 
+<style>
+    .desc_limit {
+        display: block; /* or inline-block */
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: visible;        
+        line-height: 1.8em;
+        max-height: 50px !important;
+        height: 50px !important;
+    }
+
+.card_height{
+        height: 150px !important;
+}
+</style>
+
 <div id="preloader">
     <div id="status">
         <div class="spinner-chase">
@@ -28,23 +44,23 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="~/assets/images/pizzaphotos/img8.jpg" class="d-block w-100">
+                <img src="~/assets/images/pizzaphotos/PizzaBanner1.png" class="d-block w-100">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>Veg Parcel</h5>
+                    <h5>Cheese pizza</h5>
                     <p><i>Snacky bites! Pizza rolls with paneer & creamy harissa sauce.</i></p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="~/assets/images/pizzaphotos/img9.jpg" class="d-block w-100">
+                <img src="~/assets/images/pizzaphotos/PizzaBanner2.png" class="d-block w-100">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>Chicken Keema Paratha Pizza</h5>
-                    <p><i>Flavourful & meaty chicken keema paratha and goodness of cheesy pizza coming together in an epic crossover!</i></p>
+                    <h5>Super Slice</h5>
+                    <p><i class="desc_limit">Flavourful & meaty chicken keema paratha and goodness of cheesy pizza coming together in an epic crossover!</i></p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="~/assets/images/pizzaphotos/img10.png" class="d-block w-100">
+                <img src="~/assets/images/pizzaphotos/PizzaBanner3.png" class="d-block w-100">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>Paneer Tikka Stuffed Garlic Bread</h5>
+                    <h5>Eatalian Pizza</h5>
                     <p><i>Freshly Baked Stuffed Garlic Bread with Cheese, Onion and Paneer Tikka fillings. Comes with a dash of Basil.</i></p>
                 </div>
             </div>
@@ -128,12 +144,12 @@
         <div class="card">
             <div class="row no-gutters align-items-center">
                 <div class="col-md-4">
-                    <img class="card-img img-fluid" src="~/assets/images/pizzaphotos/img4.jpg" alt="Mirinda">
+                    <img class="card_height card-img img-fluid" src="~/assets/images/pizzaphotos/img4.jpg" alt="Mirinda">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">Classic Stuffed Garlic Bread <img src="~/assets/images/pizzaphotos/v.png" width="15px" height="15px"></h5>
-                        <p class="card-text"><i>Freshly baked garlic bread with cheese, juicy corn & tangy jalapeno.</i></p>
+                        <p class="card-text"><i class="desc_limit">Freshly baked garlic bread with cheese, juicy corn & tangy jalapeno.</i></p>
                         <p class="card-text"><small class="text-muted">Regular size</small></p>
                     </div>
                 </div>
@@ -146,12 +162,12 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">Mirinda <img src="~/assets/images/pizzaphotos/v.png" width="15px" height="15px"></h5>
-                        <p class="card-text"><i>Delicious Orange Flavoured beverage.</i></p>
+                        <p class="card-text"><i class="desc_limit">Delicious Orange Flavoured beverage.</i></p>
                         <p class="card-text"><small class="text-muted"> 475ml</small></p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <img class="card-img img-fluid" src="~/assets/images/pizzaphotos/img5.jpg" alt="Mirinda">
+                    <img class="card_height card-img img-fluid" src="~/assets/images/pizzaphotos/img5.jpg" alt="Mirinda">
                 </div>
 
             </div>
@@ -166,7 +182,7 @@
         <div class="card">
             <div class="row no-gutters align-items-center">
                 <div class="col-md-4">
-                    <img class="card-img img-fluid" src="~/assets/images/pizzaphotos/img6.jpg" alt="Card image">
+                    <img class="card_height card-img img-fluid" src="~/assets/images/pizzaphotos/img6.jpg" alt="Card image">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -174,7 +190,7 @@
                             Spicy Baked Chicken Wings <img src="~/assets/images/pizzaphotos/nv.png" width="15px" height="15px">
                         </h5>
                         <p class="card-text">
-                            <i>Crisp, roasted chicken wings in classic hot sauce and peri-peri flavour.</i>
+                            <i class="desc_limit">Crisp, roasted chicken wings in classic hot sauce and peri-peri flavour.</i>
                         </p>
                         <p class="card-text"><small class="text-muted">Hot & spicy</small></p>
                     </div>
@@ -188,7 +204,7 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">Spicy Schezwan Chicken Pasta <img src="~/assets/images/pizzaphotos/nv.png" width="15px" height="15px"></h5>
-                        <p class="card-text"><i>Spicy Schezwan sauce pasta with schezwan chicken meatballs, onion, green capsicum & red capsicum.</i></p>
+                        <p class="card-text"><i class="desc_limit">Spicy Schezwan sauce pasta with schezwan chicken meatballs, onion, green capsicum & red capsicum.</i></p>
                         <p class="card-text">
                             <small class="text-muted">
                                 Mild
@@ -197,7 +213,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <img class="card-img img-fluid" src="~/assets/images/pizzaphotos/img7.jpg" alt="Card image">
+                    <img class="card_height card-img img-fluid" src="~/assets/images/pizzaphotos/img7.jpg" alt="Card image">
                 </div>
 
             </div>
