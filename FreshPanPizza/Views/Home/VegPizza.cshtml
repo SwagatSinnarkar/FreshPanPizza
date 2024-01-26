@@ -6,8 +6,7 @@
     Layout = "~/Views/Shared/Layouts/_layout_hprozontal_boxed_custom.cshtml";
 }
 
-<style>  
-
+<style>
     .desc_limit {
         display: block; /* or inline-block */
         text-overflow: ellipsis;
@@ -19,12 +18,11 @@
         height: 50px !important;
     }
 
-    .my_card_img{
+    .my_card_img {
         max-height: 120px !important;
     }
-    
-  
 </style>
+
 <div id="preloader">
     <div id="status">
         <div class="spinner-chase">
@@ -39,11 +37,8 @@
 </div>
 
 <div class="row">
-
     @foreach (var item in Model)
     {
-
-
         <div class="col-md-6 col-xl-3">
             <!-- Simple card -->
             <div class="card">
@@ -59,30 +54,17 @@
                                 <small class="text-muted">Regular/Med/Large size</small>
                             </p>
                         </div>
-                        <div class="col-xl-3">@item.UnitPrice</div>
+                        <div class="col-xl-3">₹ @item.UnitPrice.ToString("##.#")</div>
                     </div>
                     <br />
                     <a href="javascript: void(0);" class="btn btn-outline-primary waves-effect waves-light" onclick="AddToCart('@item.Id','@item.Name','@item.UnitPrice',1)">Add to Cart</a>
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-        <!-- end col -->
     }
-
-
 </div>
 
-<!-- end row -->
 @section scripts {
-
     <script src="/assets/js/app.js"></script>
 }
+

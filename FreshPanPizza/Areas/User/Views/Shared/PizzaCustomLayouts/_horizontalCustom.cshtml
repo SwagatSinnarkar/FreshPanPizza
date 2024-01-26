@@ -279,7 +279,7 @@
                             <i class="bx bx-home-circle me-2"></i><span key="t-dashboards"> Veg Pizza</span> <div class="arrow-down"></div>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
-                            <a href=@Url.Action("Index", "Dashboard") class="dropdown-item" key="t-default">Veg Pizza</a>
+                            <a href=@Url.Action("VegPizza", "Dashboard", new { itemType = 1 }) class="dropdown-item">Veg Pizza</a>
 
                         </div>
                     </li>
@@ -292,7 +292,7 @@
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="topnav-uielement">
-                            <a href=@Url.Action("Alerts", "UI") class="dropdown-item" key="t-alerts">Non-Veg Pizza</a>
+                            <a href=@Url.Action("NonVegPizza", "Dashboard", new { itemType = 2 }) class="dropdown-item">Non-Veg Pizza</a>
                         </div>
                     </li>
 
@@ -301,7 +301,7 @@
                             <i class="bx bx-customize me-2"></i><span key="t-apps">Beverages</span> <div class="arrow-down"></div>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-pages">
-                            <a href=@Url.Action("Index", "Chat") class="dropdown-item" key="t-chat">Beverages</a>
+                            <a href=@Url.Action("Beverages", "Dashboard", new { categoryType = 3 }) class="dropdown-item" key="t-chat">Beverages</a>
                         </div>
                     </li>
 
@@ -311,7 +311,7 @@
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="topnav-form">
-                            <a href=@Url.Action("FormElements", "Form") class="dropdown-item" key="t-form-elements">Form Elements</a>
+                            <a href=@Url.Action("Sides", "Dashboard", new { categoryType = 2 }) class="dropdown-item" key="t-form-elements">Sides</a>
                         </div>
                     </li>
                 </ul>

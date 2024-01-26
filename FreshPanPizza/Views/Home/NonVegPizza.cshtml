@@ -55,7 +55,7 @@
                                 <small class="text-muted">Regular/Med/Large size</small>
                             </p>
                         </div>
-                        <div class="col-xl-3">@item.UnitPrice</div>
+                        <div class="col-xl-3">₹ @item.UnitPrice.ToString("##.#")</div>
                     </div>
                     <br />
                     <a href="javascript: void(0);" class="btn btn-outline-primary waves-effect waves-light" onclick="AddToCart('@item.Id','@item.Name','@item.UnitPrice',2)">Add to Cart</a>

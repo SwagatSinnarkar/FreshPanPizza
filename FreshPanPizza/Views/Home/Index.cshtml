@@ -6,7 +6,7 @@
 }
 
 
-<style>
+@* <style>
     .desc_limit {
         display: block; /* or inline-block */
         text-overflow: ellipsis;
@@ -20,7 +20,7 @@
 .card_height{
         height: 150px !important;
 }
-</style>
+</style> *@
 
 <div id="preloader">
     <div id="status">
@@ -35,7 +35,7 @@
     </div>
 </div>
 
-<div class="row">
+@* <div class="row">
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -219,10 +219,12 @@
             </div>
         </div>
     </div>
-</div>
+</div> *@
 
 <!-- end row -->
 @section scripts {
     <script src="/assets/js/pages/dashboard.init.js"></script>
     <script src="/assets/js/app.js"></script>
 }
+
+@await Component.InvokeAsync("PizzaMenu")
