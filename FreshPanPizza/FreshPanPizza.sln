@@ -5,11 +5,11 @@ VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreshPanPizza", "FreshPanPizza.csproj", "{9D41CF82-25BE-4FAE-9CC6-BBF3AE89CD2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreshPanPizza.Entities", "..\FreshPanPizza.Entities\FreshPanPizza.Entities.csproj", "{8867F9E1-20C0-431D-81AB-5FBCDD6CB42B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreshPanPizza.Entities", "..\FreshPanPizza.Entities\FreshPanPizza.Entities.csproj", "{8867F9E1-20C0-431D-81AB-5FBCDD6CB42B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreshPanPizza.Repositories", "..\FreshPanPizza.Repositories\FreshPanPizza.Repositories.csproj", "{0EA30002-0868-4520-A690-4C23E644D133}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreshPanPizza.Repositories", "..\FreshPanPizza.Repositories\FreshPanPizza.Repositories.csproj", "{0EA30002-0868-4520-A690-4C23E644D133}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreshPanPizza.Services", "..\FreshPanPizza.Services\FreshPanPizza.Services.csproj", "{28292DBE-46C8-43C3-852E-3DDEA1955814}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreshPanPizza.Services", "..\FreshPanPizza.Services\FreshPanPizza.Services.csproj", "{28292DBE-46C8-43C3-852E-3DDEA1955814}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

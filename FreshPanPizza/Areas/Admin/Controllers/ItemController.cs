@@ -19,9 +19,9 @@ namespace FreshPanPizza.Areas.Admin.Controllers
         }
 
         //Item List Show
-        public IActionResult Index()
+        public IActionResult Index(int itemType, int categoryType)
         {
-            var data = _catalogService.GetItems(0,0);
+            var data = _catalogService.GetItems( itemType, categoryType);
             return View(data);
         }
 
@@ -129,8 +129,8 @@ namespace FreshPanPizza.Areas.Admin.Controllers
         {
             //When we`re taking a file Url so as well as it`s going to replace by % & 2 of character, so we`re using below string replace.
             url = url.Replace("%2F", "/"); //replace to find the file.
-            _catalogService.DeleteItem(id);
             _fileHelper.DeleteFile(url);
+            _catalogService.DeleteItem(id);
             return RedirectToAction("Index");
         }
         

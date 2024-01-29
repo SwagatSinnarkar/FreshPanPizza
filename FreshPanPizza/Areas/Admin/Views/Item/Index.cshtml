@@ -6,19 +6,19 @@
     Layout = "~/Areas/Admin/Views/Shared/PizzaCustomLayouts/_LayoutPizzaCustom.cshtml";
 }
 
+<link href="~/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
 <style>
-    .p{
+    .p {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         max-width: 200px;
     }
 
-    .my_card_body{
+    .my_card_body {
         max-height: 210px !important;
     }
 </style>
-
 @section styles {
     <!-- DataTables -->
     <link href="~/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -32,7 +32,7 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-body">               
+            <div class="card-body">
                 <div class="text-sm-start">
                     <a asp-action="Create" class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> New Items</a>
                 </div>
@@ -63,6 +63,7 @@
                         @foreach (var item in Model)
                         {
                             <tr>
+                               
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Id)
                                 </td>
@@ -76,19 +77,45 @@
                                     @Html.DisplayFor(modelItem => item.UnitPrice)
                                 </td>
                                 <td>
-                                    <img src="@item.ImageUrl" style="width:100px"/>
+                                    <img src="@item.ImageUrl" style="width:100px" />
                                 </td>
                                 <td>
-                                    @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "mdi mdi-pencil font-size-16 text-success me-1" })&nbsp;
-                                    @Html.ActionLink(" ", "Delete", new { id = item.Id, url = item.ImageUrl }, new { @class = "mdi mdi-trash-can font-size-16 text-danger me-1" })
+                                    <div class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                        @Html.ActionLink(" ", "Edit", "Item", new { id = item.Id }, new { @class = "mdi mdi-pencil font-size-16 text-success me-1" })
+                                    </div>&nbsp;
+                                    <div class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                        @Html.ActionLink(" ", "Delete", "Item", new { id = item.Id, url = item.ImageUrl }, new { @class = "mdi mdi-trash-can font-size-16 text-danger me-1 modelDelete" })        @*     , href = "#removeItemModal", data_bs_toggle = "modal" *@
+                                    </div>
                                 </td>
                             </tr>
                         }
                     </tbody>
+
                 </table>
             </div>
         </div>
     </div> <!-- end col -->
+</div>
+
+<div class="modal fade" id="removeItemModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-body px-4 py-5 text-center">
+                <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="avatar-sm mb-4 mx-auto">
+                    <div class="avatar-title bg-primary text-primary bg-opacity-10 font-size-20 rounded-3">
+                        <i class="mdi mdi-trash-can-outline"></i>
+                    </div>
+                </div>
+                <p class="text-muted font-size-16 mb-4">Are you Sure You want to Remove this Item ?</p>
+
+                <div class="hstack gap-2 justify-content-center mb-0">
+                    <button type="button" class="btn btn-danger" id="close-removeProductModal" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="" url="">Delete it</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section scripts {
@@ -104,13 +131,12 @@
     <script src="~/assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
     <script src="~/assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
     <script src="~/assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
-
     <!-- Responsive examples -->
     <script src="~/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
     <script src="~/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
-
     <!-- Datatable init js -->
     <script src="~/assets/js/pages/datatables.init.js"></script>
-
     <script src="~/assets/js/app.js"></script>
+    <script src="~/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+    <script src="~/assets/js/pages/bootstrap-toastr.init.js"></script>
 }

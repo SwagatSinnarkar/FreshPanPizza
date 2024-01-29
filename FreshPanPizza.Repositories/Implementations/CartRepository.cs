@@ -1,5 +1,6 @@
 ﻿using FreshPanPizza.Entities;
 using FreshPanPizza.Repositories.Interfaces;
+using FreshPanPizza.Repositories.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -74,8 +75,40 @@ namespace FreshPanPizza.Repositories.Implementations
         public int UpdateCart(Guid cartId, int userId)
         {
             Cart cart = GetCart(cartId);
-            cart.UserId = userId;   
-            return appContext.SaveChanges(); 
+            cart.UserId = userId;
+            return appContext.SaveChanges();
+        }
+
+
+        //Imp: For getting the Cart Details, We need to write the Join query as well because the Cart is not containing the 
+        //info about the Item name, Item Unit Price.
+        public CartModel GetCartDetails(Guid CartId)
+        {
+            //Fetching the Cart detail base upon the Cart Id & we`re checking wheather the Cart is Active or not.
+            var model = (from cart in appContext.Carts
+                         where cart.Id == CartId && cart.IsActive == true
+                         select new CartModel  //We`re creating the object of the Cart model where we need the Items//*// list
+                         {
+                             Id = cart.Id,
+                             UserId = cart.UserId,
+                             CreatedDate = cart.CreatedDate,
+                             //*//
+                             Items = (from cartItem in appContext.CartItems
+                                      join item in appContext.Items     //Why use join: Actually in Item table in database for shopping Cart, we never store the Item price
+                                      on cartItem.ItemId equals item.Id  //because the Item price goes up & down. Even if store in the Cart level so we`ll not able to find out the
+                                      where cartItem.CartId == CartId    //latest price whatever has been changed. That`s why we need to add here a Join query to the Item table.
+                                      select new ItemModel              //So that I`ll get the price from the Item table whatever updated over there & CartItem only have the Cart Item details.    
+                                      {
+                                          Id = cartItem.Id,
+                                          Name = item.Name,
+                                          Description = item.Description,
+                                          ImageUrl = item.ImageUrl,
+                                          Quantity = cartItem.Quantity,
+                                          ItemId = item.Id,
+                                          UnitPrice = cartItem.UnitPrice
+                                      }).ToList()
+                         }).FirstOrDefault();
+            return model;  //Returning Cart details along with item based upon the CartId.
         }
     }
 }
