@@ -17,6 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddTransient<IUserAccessor, UserAccessor>();
 builder.Services.AddTransient<ICatalogService, CatalogService>();
+builder.Services.AddTransient<ICartService, CartService>();
 builder.Services.AddTransient<IFileHelper, FileHelper>();
 
 //Connecting Database
@@ -29,9 +30,11 @@ builder.Services.AddDbContext<AppDBContext>((options) =>
 builder.Services.AddIdentity<User, Role>().AddEntityFrameworkStores<AppDBContext>().AddDefaultTokenProviders();
 builder.Services.AddScoped<DbContext, AppDBContext>();
 
+builder.Services.AddTransient<ICartRepository, CartRepository>();
 builder.Services.AddTransient<IRepository<Item>, Repository<Item>>();
 builder.Services.AddTransient<IRepository<Category>, Repository<Category>>();
 builder.Services.AddTransient<IRepository<ItemType>, Repository<ItemType>>();
+builder.Services.AddTransient<IRepository<CartItem>, Repository<CartItem>>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation(); ;

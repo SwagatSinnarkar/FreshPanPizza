@@ -67,17 +67,13 @@ namespace FreshPanPizza.Services.Implementations
             {
                 items = items.Where(x => x.ItemTypeId == itemType && x.ItemTypeId != 1 && x.CategoryId != 3 && x.CategoryId != 2);
             }
-            else
+            else 
             {
                 //For Beverages & Sides
-                if (categoryType != 2)
+                if (categoryType  == 2 || categoryType == 3)
                 {
                     items = items.Where(x => x.CategoryId == categoryType);
-                }
-                else
-                {
-                    items = items.Where(x => x.CategoryId == categoryType);
-                }
+                }                
             }
             return items;
         }
