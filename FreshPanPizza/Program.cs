@@ -36,6 +36,8 @@ builder.Services.AddTransient<IRepository<Category>, Repository<Category>>();
 builder.Services.AddTransient<IRepository<ItemType>, Repository<ItemType>>();
 builder.Services.AddTransient<IRepository<CartItem>, Repository<CartItem>>();
 
+builder.Services.AddSession();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation(); ;
 
@@ -51,6 +53,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseSession();
 
 app.UseRouting();
 

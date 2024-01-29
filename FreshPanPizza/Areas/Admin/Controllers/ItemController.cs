@@ -3,7 +3,6 @@ using FreshPanPizza.Interfaces;
 using FreshPanPizza.Models;
 using FreshPanPizza.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FreshPanPizza.Areas.Admin.Controllers
 {
@@ -65,11 +64,12 @@ namespace FreshPanPizza.Areas.Admin.Controllers
 
         //Edit
         //Based on id I`ll get item details from the Catalog service.
+
         public IActionResult Edit(int id)
         {
             ViewBag.Categories = _catalogService.GetCategories();
             ViewBag.ItemTypes = _catalogService.GetItemType();
-            Item data = _catalogService.GetItem(id);
+            Item data = _catalogService.GetItem(id);           
             ItemModel itemModel = new ItemModel
             {
                 Id = data.Id,
@@ -128,7 +128,7 @@ namespace FreshPanPizza.Areas.Admin.Controllers
         public IActionResult Delete(int id, string url)
         {
             //When we`re taking a file Url so as well as it`s going to replace by % & 2 of character, so we`re using below string replace.
-            url = url.Replace("%2F", "/"); //replace to find the file.
+            url = url.Replace("%2F", @"\"); //replace to find the file.
             _fileHelper.DeleteFile(url);
             _catalogService.DeleteItem(id);
             return RedirectToAction("Index");

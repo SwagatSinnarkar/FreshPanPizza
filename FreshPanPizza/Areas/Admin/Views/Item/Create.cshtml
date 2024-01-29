@@ -1,4 +1,6 @@
 ﻿@model FreshPanPizza.Models.ItemModel
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
     ViewBag.Title = Model != null ? "Edit" : "Create";
@@ -15,9 +17,7 @@
                 <h4 class="card-title mb-4">@ViewBag.cardTitle items</h4>
 
                 <form asp-action="@ViewBag.Title" enctype="multipart/form-data">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input asp-for="Id" type="hidden" />
-
+                    <div asp-validation-summary="All" class="text-danger"></div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
@@ -65,15 +65,16 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6">
-                            <label asp-for="File" class="control-label"></label>
-                            <input type="file" asp-for="File" class="form-control" style="border:none;padding: .375rem 0;" />
-                            <span asp-validation-for="File" class="text-danger"></span>    
-                           <br/>
+                        <div class="col-lg-6">                           
+                                <label asp-for="File" class="control-label"></label>                         
+                                <input asp-for="File" class="form-control" type="file" />
+                                <span asp-validation-for="File" class="text-danger"></span>
+                                                      
+                              <br/>
                             @if (Model != null && !string.IsNullOrEmpty(Model.ImageUrl))
                             {
-                                <input type="hidden" asp-for="ImageUrl" />
-                                <img id="itemImage" src="@Model.ImageUrl" height="150" width="150" style="border:1px solid" />
+                            <input type="hidden" asp-for="ImageUrl" />
+                            <img id="itemImage" src="@Model.ImageUrl" height="150" width="150" style="border:1px solid" />
                             }
                         </div>
                     </div>
@@ -106,6 +107,6 @@
         </script>
     }
 
-@*     <script src="~/assets/js/pages/form-validation.init.js"></script> *@
+    @*     <script src="~/assets/js/pages/form-validation.init.js"></script> *@
     <script src="~/assets/js/app.js"></script>
 }

@@ -29,6 +29,7 @@ namespace FreshPanPizza.Helpers
             //delete existing file
             if (File.Exists(_env.WebRootPath + imgUrl))
             {
+                string val = _env.WebRootPath + imgUrl;
                 File.Delete(_env.WebRootPath + imgUrl);
             }
         }
