@@ -3,6 +3,7 @@ using FreshPanPizza.Interfaces;
 using FreshPanPizza.Models;
 using FreshPanPizza.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace FreshPanPizza.Areas.Admin.Controllers
 {
@@ -131,7 +132,8 @@ namespace FreshPanPizza.Areas.Admin.Controllers
             url = url.Replace("%2F", @"\"); //replace to find the file.
             _fileHelper.DeleteFile(url);
             _catalogService.DeleteItem(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index");            
+            //return Json(new { status = "success" });
         }
         
     }

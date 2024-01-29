@@ -63,7 +63,7 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                               
+
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Id)
                                 </td>
@@ -84,7 +84,11 @@
                                         @Html.ActionLink(" ", "Edit", "Item", new { id = item.Id }, new { @class = "mdi mdi-pencil font-size-16 text-success me-1" })
                                     </div>&nbsp;
                                     <div class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                                        @Html.ActionLink(" ", "Delete", "Item", new { id = item.Id, url = item.ImageUrl }, new { @class = "mdi mdi-trash-can font-size-16 text-danger me-1 modelDelete" })        @*     , href = "#removeItemModal", data_bs_toggle = "modal" *@
+                                        @* @Html.ActionLink(" ", "Delete", "Item", new { id = item.Id, url = item.ImageUrl }, new { @class = "mdi mdi-trash-can font-size-16 text-danger me-1" }) *@ @*,href = "#removeItemModal", data_bs_toggle = "modal" *@
+
+                                        <a class="mdi mdi-trash-can font-size-16 text-danger me-1 deleteModel" data-id=@item.Id, data-url=@item.ImageUrl></a>
+
+
                                     </div>
                                 </td>
                             </tr>
@@ -107,11 +111,13 @@
                         <i class="mdi mdi-trash-can-outline"></i>
                     </div>
                 </div>
-                <p class="text-muted font-size-16 mb-4">Are you Sure You want to Remove this Item ?</p>
+                <input type="hidden" id="hiddenId" value="0">
+                <input type="hidden" id="hiddenurlImg" value="0">
+                <p class="text-muted font-size-16 mb-4">Are you sure you want to delete this Item?</p>
 
                 <div class="hstack gap-2 justify-content-center mb-0">
                     <button type="button" class="btn btn-danger" id="close-removeProductModal" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="" url="">Delete it</button>
+                    <button type="button" class="btn btn-primary" onclick="deleteItem()">Delete it</button>
                 </div>
             </div>
         </div>
@@ -119,6 +125,7 @@
 </div>
 
 @section scripts {
+                    <
     <!-- Required datatable js -->
     <script src="~/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="~/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -139,4 +146,33 @@
     <script src="~/assets/js/app.js"></script>
     <script src="~/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
     <script src="~/assets/js/pages/bootstrap-toastr.init.js"></script>
+
+    <script type="text/javascript">
+        $(document).on("click", ".deleteModel", function () {
+            var Id = $(this).attr("data-id").trim();
+            var urlImg = $(this).attr("data-url").trim();
+
+            $("#hiddenId").val(Id)
+            $("#hiddenurlImg").val(urlImg)
+            $('#removeItemModal').modal('show');
+        });
+
+        function deleteItem() {
+            var id = $("#hiddenId").val().replace(",", "")
+            var urlImg = $("#hiddenurlImg").val().replace("adminImagesCustom/", "%2FadminImagesCustom%2F");
+            $.ajax({
+                type: 'POST',
+                url: "/Admin/Item/Delete/" + id + urlImg,
+                success: function (result) {
+                        setTimeout(function () {
+                        window.location = "Item/Index";
+                    }, 1000);
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+
+        }
+    </script>
 }

@@ -28,8 +28,7 @@ namespace FreshPanPizza.Helpers
         {
             //delete existing file
             if (File.Exists(_env.WebRootPath + imgUrl))
-            {
-                string val = _env.WebRootPath + imgUrl;
+            {               
                 File.Delete(_env.WebRootPath + imgUrl);
             }
         }
@@ -60,6 +59,7 @@ namespace FreshPanPizza.Helpers
             var fileName = GenerateFileName(file.FileName);
             var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create);
             file.CopyToAsync(fileStream);
+            fileStream.Close();
             return "/adminImagesCustom/" + fileName;
         }
     }
