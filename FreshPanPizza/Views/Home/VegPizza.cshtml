@@ -4,6 +4,9 @@
     ViewBag.pTitle = "Menu";
     ViewBag.pageTitle = "Veg Pizza";
     Layout = "~/Views/Shared/Layouts/_layout_hprozontal_boxed_custom.cshtml";
+    var dt = DateTime.Now;
+    string date = dt.ToString("dd-MM");
+    string time = dt.ToString("HH:mm");
 }
 
 <style>
@@ -64,7 +67,51 @@
     }
 </div>
 
+<div class="d-flex flex-wrap gap-2">
+    <div>
+        <div class="position-fixed top-0 end-0 p-3" style="z-index: 1005">
+            <div id="liveToast" class="toast fade" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img src="/assets/images/PizzaLogo/logo.png" class="me-2" alt="logo" height="18">
+                    <strong class="me-auto" style="color:black !important">Notification</strong>
+                    <small style="color:black">@time</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body" style="color:black">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section scripts {
     <script src="/assets/js/app.js"></script>
-}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
+
+    <script>
+        function AddToCart(ItemId, Name, UnitPrice, Quantity) {
+          
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: '/Cart/AddToCart/' + ItemId + "/" + UnitPrice + "/" + Quantity,
+                success: function (d) {
+                   
+                    var data = JSON.parse(d);
+                    if (data.Items.length > 0) {
+                        $('.noti_Counter').text(data.Items.length);
+                        var message = '<strong>' + Name + '</strong> Added to <a>Cart</a> Successfully!';
+                        $('#liveToast > .toast-body').html(message);
+                        $('#liveToast').toast("show");
+                        setTimeout(function () {
+                            $('#liveToast').toast("hide");
+                        }, 4000);
+                    }
+                },
+                error: function (result) {
+                }
+            });
+        }
+    </script>
+}

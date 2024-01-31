@@ -1,9 +1,9 @@
-﻿<header id="page-topbar" style="background:#0066A7">
+﻿<header id="page-topbar" style="background:#556ee6">
     <div class="navbar-header">
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href=@Url.Action("Index", "Dashboard") class="logo logo-dark">
+                <a href=@Url.Action("Index", "Home") class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="~/assets/images/pizzalogo/logo.png" alt="" height="22">
                     </span>
@@ -12,7 +12,7 @@
                     </span>
                 </a>
 
-                <a href=@Url.Action("Index", "Dashboard") class="logo logo-light">
+                <a href=@Url.Action("Index", "Home") class="logo logo-light">
                     <span class="logo-sm">
                         <img src="~/assets/images/pizzalogo/logo.png" alt="" height="35">
                     </span>
@@ -28,10 +28,10 @@
 
             <!-- App Search-->
             @* <form class="app-search d-none d-lg-block">
-                <div class="position-relative">
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <span class="bx bx-search-alt"></span>
-                </div>
+            <div class="position-relative">
+            <input type="text" class="form-control" placeholder="Search...">
+            <span class="bx bx-search-alt"></span>
+            </div>
             </form> *@
 
 
@@ -238,6 +238,14 @@
             </div> *@
 
             <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item noti-icon waves-effect" aria-haspopup="true" aria-expanded="false" asp-controller="Cart"
+                        asp-action="Index">
+                    <i class="bx bx-cart"></i>
+                    <span class="badge bg-danger rounded-pill noti_Counter">0</span>
+                </button>
+            </div>
+
+            <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle header-profile-user" src="~/assets/images/users/avatar-1.jpg"
@@ -259,7 +267,7 @@
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
-                    <i class="bx bx-cog bx-spin"></i>
+                    <i class="bx bx-cog"></i>
                 </button>
             </div>
 
@@ -322,12 +330,9 @@
 
 
 @section scripts {
-
-    <script src="/assets/js/pages/dashboard.init.js"></script>
-
+    <script src="~/assets/libs/jquery/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="/assets/js/app.js"></script>
-
-
-
-
+    <script src="/assets/js/pages/dashboard.init.js"></script>
+    <script src="~/assets/js/cart.js"></script>
 }

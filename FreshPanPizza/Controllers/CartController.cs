@@ -4,6 +4,8 @@ using FreshPanPizza.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
+using FreshPanPizza.Helpers;
+using System;
 
 namespace FreshPanPizza.Controllers
 {
@@ -38,7 +40,7 @@ namespace FreshPanPizza.Controllers
         }
 
 
-        public CartController(ICartService cartService, UserManager<User> userManager) : base(userManager) 
+        public CartController(ICartService cartService, UserManager<User> userManager) : base(userManager)
         {
             _cartService = cartService;
         }
@@ -47,11 +49,37 @@ namespace FreshPanPizza.Controllers
         {
             //First, we need to create the Cart listing page where we`ll display the Cart info along with the CartItem.
             //So using with CartModel, we`ll get the Cart details here.
-            CartModel cart = _cartService.GetCartDetails(CartId);            
+            CartModel cart = _cartService.GetCartDetails(CartId);
             return View(cart);
         }
 
-        
+        [Route("Cart/AddToCart/{ItemId}/{UnitPrice}/{Quantity}")]
+        public IActionResult AddToCart(int ItemId, decimal UnitPrice, int Quantity)
+        {
+            int UserId = CurrentUser != null ? CurrentUser.Id : 0;
+            if (ItemId > 0 && Quantity > 0)
+            {
+                Cart cart = _cartService.AddItem(UserId, CartId, ItemId, UnitPrice, Quantity);
+                var data = JsonSerializer.Serialize(cart);
+                return Json(data);
+            }
+            else
+            {
+                return Json("");
+            }
+        }
 
+        public IActionResult DeleteItem(int Id)
+        {
+            int count = _cartService.DeleteItem(CartId, Id);
+            return Json(count);
+        }
+
+        [Route("Cart/UpdateQuantity/{Id}/{Quantity}")]
+        public IActionResult UpdateQuantity(int Id, int Quantity)
+        {
+            int count = _cartService.UpdateQuantity(CartId, Id, Quantity);  
+            return Json(count);
+        }
     }
 }
