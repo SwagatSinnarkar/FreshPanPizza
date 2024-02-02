@@ -37,11 +37,8 @@
 </div>
 
 <div class="row">
-
     @foreach (var item in Model)
     {
-
-
         <div class="col-md-6 col-xl-3">
             <!-- Simple card -->
             <div class="card">
@@ -60,27 +57,18 @@
                         <div class="col-xl-3">₹ @item.UnitPrice.ToString("##.#")</div>
                     </div>
                     <br />
-                    <a href="javascript: void(0);" class="btn btn-outline-primary waves-effect waves-light" onclick="AddToCart('@item.Id','@item.Name','@item.UnitPrice')">Add to Cart</a>
+                    <a href="javascript: void(0);" class="btn btn-outline-primary waves-effect waves-light" onclick="AddToCart('@item.Id','@item.Name','@item.UnitPrice',1)">Add to Cart</a>
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-        <!-- end col -->
     }
-
-
 </div>
 
-<!-- end row -->
-@section scripts {
 
+@await Html.PartialAsync("/Views/_ToastCode.cshtml")
+
+@section scripts {
     <script src="/assets/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="~/assets/js/cart.js"></script>
 }

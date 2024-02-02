@@ -5,7 +5,6 @@
         contentType: "application/json; charset=utf-8",
         url: '/Cart/AddToCart/' + ItemId + "/" + UnitPrice + "/" + Quantity,
         success: function (d) {
-
             var data = JSON.parse(d);
             if (data.Items.length > 0) {
                 $('.noti_Counter').text(data.Items.length);

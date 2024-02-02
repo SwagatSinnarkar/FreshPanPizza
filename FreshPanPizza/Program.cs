@@ -19,6 +19,7 @@ builder.Services.AddTransient<IUserAccessor, UserAccessor>();
 builder.Services.AddTransient<ICatalogService, CatalogService>();
 builder.Services.AddTransient<ICartService, CartService>();
 builder.Services.AddTransient<IFileHelper, FileHelper>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 //Connecting Database
 var connectionString = builder.Configuration.GetConnectionString("DBConnection");
