@@ -1,5 +1,5 @@
 ﻿
-<header id="page-topbar" style="background:#556ee6">
+<header id="page-topbar" style="background:linear-gradient(145deg, #375ee3 0%, #6543e0 80%);">
     @* background:#0066A7" *@
     <div class="navbar-header">
         <div class="d-flex">
@@ -96,7 +96,8 @@
                             <i class="bx bx-home-circle me-2"></i><span key="t-dashboards"> Veg Pizza</span> <div class="arrow-down"></div>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
-                            <a href=@Url.Action("VegPizza", "Home", new { itemType = 1 }) class="dropdown-item">Veg Pizza</a>
+                           @*  <a href=@Url.Action("VegPizza", "Home", new { itemType = 1 }) class="dropdown-item">Veg Pizza</a> *@
+                            <a href="#vegPizza" class="dropdown-item">Veg Pizza</a>
 
                         </div>
                     </li>
@@ -109,7 +110,8 @@
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="topnav-uielement">
-                            <a href=@Url.Action("NonVegPizza", "Home", new { itemType = 2 }) class="dropdown-item">Non-Veg Pizza</a>
+                           @*  <a href=@Url.Action("NonVegPizza", "Home", new { itemType = 2 }) class="dropdown-item">Non-Veg Pizza</a> *@
+                            <a href="#nonVegPizza" class="dropdown-item">Non-Veg Pizza</a>
                         </div>
                     </li>
 
@@ -118,7 +120,8 @@
                             <i class="bx bx-customize me-2"></i><span key="t-apps">Beverages</span> <div class="arrow-down"></div>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-pages">
-                            <a href=@Url.Action("Beverages", "Home", new { categoryType = 3 }) class="dropdown-item" key="t-chat">Beverages</a>
+                            @* <a href=@Url.Action("Beverages", "Home", new { categoryType = 3 }) class="dropdown-item" key="t-chat">Beverages</a> *@
+                            <a href="#Beverages" class="dropdown-item">Beverages</a>
                         </div>
                     </li>
 
@@ -128,9 +131,10 @@
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="topnav-form">
-                            <a href=@Url.Action("Sides", "Home", new { categoryType = 2 }) class="dropdown-item" key="t-form-elements">Sides</a>
+                            @* <a href=@Url.Action("Sides", "Home", new { categoryType = 2 }) class="dropdown-item" key="t-form-elements">Sides</a> *@
+                            <a href="#Sides" class="dropdown-item">Sides</a>
                         </div>
-                    </li>
+                    </li>                  
                 </ul>
             </div>
         </nav>

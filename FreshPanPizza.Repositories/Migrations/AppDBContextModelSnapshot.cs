@@ -126,6 +126,23 @@ namespace FreshPanPizza.Repositories.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("FreshPanPizza.Entities.Crust", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Crust");
+                });
+
             modelBuilder.Entity("FreshPanPizza.Entities.Item", b =>
                 {
                     b.Property<int>("Id")
@@ -252,6 +269,38 @@ namespace FreshPanPizza.Repositories.Migrations
                     b.ToTable("OrderItems");
                 });
 
+            modelBuilder.Entity("FreshPanPizza.Entities.PCrust", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Name")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PizzaCrust");
+                });
+
+            modelBuilder.Entity("FreshPanPizza.Entities.PSize", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Name")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PizzaSize");
+                });
+
             modelBuilder.Entity("FreshPanPizza.Entities.Payment", b =>
                 {
                     b.Property<string>("Id")
@@ -325,6 +374,23 @@ namespace FreshPanPizza.Repositories.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("FreshPanPizza.Entities.Size", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Size");
                 });
 
             modelBuilder.Entity("FreshPanPizza.Entities.User", b =>

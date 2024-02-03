@@ -1,0 +1,159 @@
+﻿@model IEnumerable<FreshPanPizza.Entities.Item>
+
+    <div class="menu-hr" id="vegPizza">
+    <span class="cat-bar">
+        <span class="menu-catname text-success"><img src="~/assets/images/pizzaphotos/v.png" width="15px" height="15px"> Veg</span>
+    </span>
+</div>
+<br />
+<br />
+<br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        if (@item.CategoryId == 1 && @item.ItemTypeId == 1)
+        {
+            <div class="col-md-6 col-xl-3">
+                <!-- Simple card -->
+                <div class="card">
+                    <img class="my_card_img card-img-top img-fluid" src="@item.ImageUrl" alt="@item.Name">
+                    <div class="card-body">
+                        <h4 class="card-title">@item.Name</h4>
+                        <p class="card-text">
+                            <i class="desc_limit" title="@item.Description">@item.Description</i>
+                        </p>
+                        <div class="row">
+                            <div class="col-xl-9">
+                                <p class="card-text">
+                                    <small class="text-muted">Regular</small>
+                                </p>
+                            </div>
+                            <div class="col-xl-3">₹ @item.UnitPrice.ToString("##.#")</div>
+                        </div>
+                        <br />
+                        <a href="javascript: void(0);" class="btn btn-outline-primary waves-effect waves-light" onclick="AddToCart('@item.Id','@item.Name','@item.UnitPrice',1)">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+
+<div class="menu-hr" id="nonVegPizza">
+    <span class="cat-bar">
+        <span class="menu-catname text-danger"><img src="~/assets/images/pizzaphotos/nv.png" width="15px" height="15px"> Non-Veg</span>
+    </span>
+</div>
+<br />
+<br />
+<br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        if (@item.CategoryId == 1 && @item.ItemTypeId == 2)
+        {
+            <div class="col-md-6 col-xl-3">
+                <!-- Simple card -->
+                <div class="card">
+                    <img class="my_card_img card-img-top img-fluid" src="@item.ImageUrl" alt="@item.Name">
+                    <div class="card-body">
+                        <h4 class="card-title">@item.Name</h4>
+                        <p class="card-text">
+                            <i class="desc_limit" title="@item.Description">@item.Description</i>
+                        </p>
+                        <div class="row">
+                            <div class="col-xl-9">
+                                <p class="card-text">
+                                    <small class="text-muted">Regular</small>
+                                </p>
+                            </div>
+                            <div class="col-xl-3">₹ @item.UnitPrice.ToString("##.#")</div>
+                        </div>
+                        <br />
+                        <a href="javascript: void(0);" class="btn btn-outline-primary waves-effect waves-light" onclick="AddToCart('@item.Id','@item.Name','@item.UnitPrice',1)">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+
+<div class="menu-hr" id="Beverages">
+    <span class="cat-bar">
+        <span class="menu-catname text-success"><img src="~/assets/images/pizzaphotos/v.png" width="15px" height="15px"> Beverages</span>
+    </span>
+</div>
+<br />
+<br />
+<br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        if (@item.CategoryId == 3)
+        {
+            <div class="col-md-6 col-xl-3">             
+                <div class="card">
+                    <img class="my_card_img card-img-top img-fluid" src="@item.ImageUrl" alt="@item.Name">
+                    <div class="card-body">
+                        <h4 class="card-title">@item.Name</h4>
+                        <p class="card-text">
+                            <i class="desc_limit" title="@item.Description">@item.Description</i>
+                        </p>
+                        <div class="row">
+                            <div class="col-xl-9">
+                                <p class="card-text">
+                                    <small class="text-muted">Regular</small>
+                                </p>
+                            </div>
+                            <div class="col-xl-3">₹ @item.UnitPrice.ToString("##.#")</div>
+                        </div>
+                        <br />
+                        <a href="javascript: void(0);" class="btn btn-outline-primary waves-effect waves-light" onclick="AddToCart('@item.Id','@item.Name','@item.UnitPrice',1)">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+
+<div class="menu-hr" id="Sides">
+    <span class="cat-bar">
+        <span class="menu-catname text-primary">Sides</span>
+    </span>
+</div>
+<br />
+<br />
+<br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        if (@item.CategoryId == 2)
+        {
+            <div class="col-md-6 col-xl-3">
+                <!-- Simple card -->
+                <div class="card">
+                    <img class="my_card_img card-img-top img-fluid" src="@item.ImageUrl" alt="@item.Name">
+                    <div class="card-body">
+                        <h4 class="card-title">@item.Name</h4>
+                        <p class="card-text">
+                            <i class="desc_limit" title="@item.Description">@item.Description</i>
+                        </p>
+                        <div class="row">
+                            <div class="col-xl-9">
+                                <p class="card-text">
+                                    <small class="text-muted">Regular</small>
+                                </p>
+                            </div>
+                            <div class="col-xl-3">₹ @item.UnitPrice.ToString("##.#")</div>
+                        </div>
+                        <br />
+                        <a href="javascript: void(0);" class="btn btn-outline-primary waves-effect waves-light" onclick="AddToCart('@item.Id','@item.Name','@item.UnitPrice',1)">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

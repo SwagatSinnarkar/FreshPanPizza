@@ -1,0 +1,68 @@
+﻿@model IEnumerable<FreshPanPizza.Entities.Item>
+@{
+    ViewBag.Title = "Dashboard";
+    ViewBag.pTitle = "Menu";
+    ViewBag.pageTitle = "Dashboard";
+    Layout = "~/Views/Shared/Layouts/_layout_hprozontal_boxed_custom.cshtml";
+}
+<style>
+    .desc_limit {
+        display: block; /* or inline-block */
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        max-height: 3.6em;
+        line-height: 1.8em;
+        max-height: 50px !important;
+        height: 50px !important;
+    }
+
+    .my_card_img {
+        max-height: 120px !important;
+    }
+
+    .menu-hr {
+        width: 100%;
+        border-bottom: 1px solid #D2D2D2;
+        height: 25px;
+        top: 2.5rem;
+    }
+
+    .cat-bar {
+        background: rgb(255, 255, 255);
+        border-radius: 2rem;
+        display: inline-flex;
+        -webkit-box-align: center;
+        align-items: center;
+        padding: 1rem 2rem;
+        margin: 0px 0px 1rem 1.5rem;
+    }
+
+    .menu-catname {
+        width: 100%;
+    }
+
+    div.page {
+        min-height: 200px;
+    }
+</style>
+<div id="preloader">
+    <div id="status">
+        <div class="spinner-chase">
+            <div class="chase-dot"></div>
+            <div class="chase-dot"></div>
+            <div class="chase-dot"></div>
+            <div class="chase-dot"></div>
+            <div class="chase-dot"></div>
+            <div class="chase-dot"></div>
+        </div>
+    </div>
+</div>
+@await Component.InvokeAsync("PizzaMenu")
+@await Html.PartialAsync("/Views/_PizzaMenu.cshtml")
+@await Html.PartialAsync("/Views/_ToastCode.cshtml")
+@section scripts {
+    <script src="/assets/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="~/assets/js/cart.js"></script>
+}
