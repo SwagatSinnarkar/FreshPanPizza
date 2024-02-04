@@ -89,6 +89,7 @@ namespace FreshPanPizza.Services.Implementations
                     item.Total = item.UnitPrice * item.Quantity;
                     subTotal += item.Total;
                 }
+                model.Total = subTotal;
                 //5% Tax
                 model.Tax = Math.Round((model.Total * 5) / 100, 2);
                 model.GrandTotal = model.Tax + model.Total;

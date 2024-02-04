@@ -1,11 +1,3 @@
-/*
-Template Name: FreshPanPizza - Admin & Dashboard Template
-Author: Themesbrand
-Website: https://themesbrand.com/
-Contact: themesbrand@gmail.com
-File: ecommerce cart Js File
-*/
-
 var currencySign = "$";
 var taxRate = 0.125;
 var shippingRate = 25.00;

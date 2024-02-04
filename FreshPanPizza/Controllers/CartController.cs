@@ -4,18 +4,12 @@ using FreshPanPizza.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
-using FreshPanPizza.Helpers;
-using System;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using Microsoft.AspNetCore.Hosting.Server;
-using Microsoft.AspNetCore.Http;
 
 namespace FreshPanPizza.Controllers
 {
     public class CartController : BaseController
     {
-        ICartService _cartService;
-        IHttpContextAccessor _httpContextAccessor;
+        ICartService _cartService;      
 
         //If you look at here, when you`re browsing any website so usually website allow you to create the shopping cart and adding the items to that.
         //So same statergy here we`re going to follow. we`ll allow user to create the shopping cart.
@@ -44,10 +38,9 @@ namespace FreshPanPizza.Controllers
         }
 
 
-        public CartController(ICartService cartService, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor) : base(userManager)
+        public CartController(ICartService cartService, UserManager<User> userManager) : base(userManager)
         {
-            _cartService = cartService;
-            _httpContextAccessor = httpContextAccessor;
+            _cartService = cartService;        
         }
 
         public IActionResult Index()
@@ -84,6 +77,12 @@ namespace FreshPanPizza.Controllers
         public IActionResult UpdateQuantity(int Id, int Quantity)
         {
             int count = _cartService.UpdateQuantity(CartId, Id, Quantity);
+            return Json(count);
+        }
+
+        public IActionResult GetCartCount()
+        {
+            int count = _cartService.GetCartCount(CartId);
             return Json(count);
         }
     }

@@ -55,11 +55,18 @@
                 </button>
             </div>
 
+            <div class="dropdown d-inline-block">
+                <a class="btn header-item noti-icon waves-effect" asp-controller="Cart" asp-action="Index">
+                    <span class="badge bg-danger rounded-pill noti_Counter">0</span>
+                    <i class="bx bx-cart" style="margin-top: 16px"></i>
+                </a>
+            </div>
+
             <a class="btn waves-effect" href="@Url.Action("Login", "Account")" style="margin-top: 15px; color:white">Login</a>                                  
                     
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
-                    <i class="bx bx-cog bx-spin"></i>
+                    <i class="bx bx-cog"></i>
                 </button>
             </div>
 
