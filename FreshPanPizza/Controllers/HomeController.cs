@@ -19,31 +19,6 @@ namespace FreshPanPizza.Controllers
             return View();
         }
 
-        //Veg Pizza
-        public IActionResult VegPizza(int itemType, int categoryType)
-        {
-            var items = _catalogService.GetItems(itemType, categoryType); 
-            return View(items);
-        }
-        //Non-Veg Pizza
-        public IActionResult NonVegPizza(int itemType, int categoryType)
-        {
-            var items = _catalogService.GetItems(itemType, categoryType);
-            return View(items);
-        }
-        //Beverages
-        public IActionResult Beverages(int itemType, int categoryType)
-        {
-            var items = _catalogService.GetItems(itemType, categoryType);
-            return View(items);
-        }
-        //Sides
-        public IActionResult Sides(int itemType, int categoryType)
-        {
-            var items = _catalogService.GetItems(itemType, categoryType);
-            return View(items);
-        }
-
         public IActionResult SingleDashboard(int itemType, int categoryType)
         {
             var items = _catalogService.GetItems(itemType, categoryType);

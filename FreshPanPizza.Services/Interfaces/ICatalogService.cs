@@ -7,7 +7,6 @@ namespace FreshPanPizza.Services.Interfaces
         IEnumerable<Category> GetCategories();
         IEnumerable<ItemType> GetItemType();
         IEnumerable<Item> GetItems(int itemType, int categoryType);
-        IEnumerable<Item> GetItems1();
         Item GetItem(int id);
         void AddItem(Item item);
         void UpdateItem(Item item);
