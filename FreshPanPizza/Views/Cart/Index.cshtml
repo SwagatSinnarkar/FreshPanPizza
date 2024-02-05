@@ -1,113 +1,197 @@
 ﻿@model FreshPanPizza.Repositories.Models.CartModel
 @{
-    var CurrentUser = User.Identity.Name;
+    ViewBag.Title = "Cart"; 
     Layout = "~/Views/Shared/Layouts/CartLayout/_Cart_Layout_Navbar.cshtml";
 }
 
 
 <link href="~/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
 
-
-<div class="row">
-    <div class="col-xl-8">
-        <div class="card">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table align-middle mb-0 table-nowrap">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Item (@Model.Items.Count())</th>
-                                <th>Item Desc</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th colspan="2">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.Items)
-                            {
-                                <tr class="product">
-                                    <td>
-                                        <img class="rounded" src="@item.ImageUrl" alt="img" style="width:100px">
-                                    </td>
-                                    <td>
-                                        <h5 class="font-size-14 text-truncate"><a href="/ecommerce/productdetail" class="text-dark">@item.Name</a></h5>
-                                        <p class="mb-2 text-muted small">Size : <span class="fw-medium">Regular</span></p>
-                                    </td>
-                                    <td><span class="product-price">₹ @item.UnitPrice.ToString("##.#")</span></td>
-                                    <td>
-
-                                        <div class="me-3" style="width: 120px;">
-                                            <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
-                                                <input class="form-control sm-control" size="2" min="0" name="quantity" value="@item.Quantity" readonly />
-                                                <span class="input-group-addon bootstrap-touchspin-vertical-button-wrapper">
-                                                    <span class="input-group-btn-vertical">
-                                                        <button tabindex="-1" class="btn btn-primary bootstrap-touchspin-up" onclick="updateQuantity('@item.Id',1)" type="button">+</button>
-                                                        <button tabindex="-1" class="btn btn-primary bootstrap-touchspin-down" onclick="updateQuantity('@item.Id',-1)" type="button">−</button>
-                                                    </span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td><span>₹@((item.UnitPrice * @item.Quantity).ToString("##.#"))</span></td>
-                                    <td>
-                                        <div class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove">
-                                            <a href="#removeItemModal" data-bs-toggle="modal" class="action-icon text-danger"> <i class="mdi mdi-trash-can font-size-18"></i></a>
-                                        </div>
-                                    </td>
+@if (Model != null && Model.Items.Count > 0)
+{
+    <div class="row">
+        <div class="col-xl-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0 table-nowrap">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Item (@Model.Items.Count())</th>
+                                    <th>Item Desc</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th colspan="2">Total</th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-                <div class="row mt-4">
-                    <div class="col-sm-6">
-                        <a href="/ecommerce/products" class="btn btn-outline-primary">
-                            <i class="mdi mdi-arrow-left me-1"></i> Continue Shopping
-                        </a>
-                    </div> <!-- end col -->
-                    <div class="col-sm-6">
-                        <div class="text-sm-end mt-2 mt-sm-0">
-                            <a href="/ecommerce/checkout" class="btn btn-success">
-                                <i class="mdi mdi-cart-arrow-right me-1"></i> Checkout
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Items)
+                                {
+                                    <tr class="product">
+                                        <td>
+                                            <img class="rounded" src="@item.ImageUrl" alt="img" style="width:100px">
+                                        </td>
+                                        <td>
+                                            <h5 class="font-size-14 text-truncate"><a href="/ecommerce/productdetail" class="text-dark">@item.Name</a></h5>
+                                            <p class="mb-2 text-muted small">Size : <span class="fw-medium">Regular</span></p>
+                                        </td>
+                                        <td><span class="product-price">₹ @item.UnitPrice.ToString("##.#")</span></td>
+                                        <td>
+
+                                            <div class="me-3" style="width: 120px;">
+                                                <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
+                                                    <input class="form-control sm-control" size="2" min="0" name="quantity" value="@item.Quantity" readonly />
+                                                    <span class="input-group-addon bootstrap-touchspin-vertical-button-wrapper">
+                                                        <span class="input-group-btn-vertical">
+                                                            <button tabindex="-1" class="btn btn-primary bootstrap-touchspin-up" onclick="updateQuantity('@item.Id',1)" type="button">+</button>
+                                                            <button tabindex="-1" class="btn btn-primary bootstrap-touchspin-down" onclick="updateQuantity('@item.Id',-1)" type="button">−</button>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span>₹@((item.UnitPrice * @item.Quantity).ToString("##.#"))</span></td>
+                                        <td>
+                                            <div class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                                <a class="mdi mdi-trash-can font-size-18 text-danger deleteModel" data-id=@item.Id></a>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-sm-6">
+                            <a href="/ecommerce/products" class="btn btn-outline-primary">
+                                <i class="mdi mdi-arrow-left me-1"></i> Continue Shopping
                             </a>
                         </div>
-                    </div> <!-- end col -->
-                </div> <!-- end row-->
+                       @*  @if (CurentUser != null)
+                        {
+                            <div class="col-sm-6">
+                                <div class="text-sm-end mt-2 mt-sm-0">
+                                    <a asp-action="CheckOut" asp-controller="Cart" class="btn btn-success">
+                                        <i class="mdi mdi-cart-arrow-right me-1"></i> Checkout
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-sm-6">
+                                <div class="text-sm-end mt-2 mt-sm-0">
+                                    <a asp-action="Login" asp-controller="Account" asp-route-returnurl="/Cart/Index" class="btn btn-primary btn-block">
+                                        <i class="mdi mdi-cart-arrow-right me-1"></i> Checkout
+                                    </a>
+                                </div>
+                            </div>
+                        } *@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-3">Order Summary</h4>
+
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <tbody>
+                                <tr>
+                                    <td>Grand Total :</td>
+                                    <td id="cart-subtotal">₹ @Model.Total</td>
+                                </tr>
+                                <tr>
+                                    <td>Tax(5%) :</td>
+                                    <td id="cart-tax">₹ @Model.Tax</td>
+                                </tr>
+                                <tr class="bg-light">
+                                    <th>Total :</th>
+                                    <th id="cart-total">₹ @Model.GrandTotal</th>
+                                </tr>
+                            </tbody>
+                        </table>                        
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-xl-4">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title mb-3">Order Summary</h4>
+}
+else
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="text-center">
+                <a href=@Url.Action("Index", "Dashboard") class="d-block auth-logo">
+                    <img src="~/assets/images/logo-light.png" alt="" height="20" class="auth-logo-light mx-auto">
+                </a>
+                <div class="row justify-content-center mt-5">
+                    <div class="col-sm-4">
+                        <div class="maintenance-img">
+                            <img src="~/assets/images/PizzaPhotos/emptyCart.jpg" alt="emptyCart" class="mx-auto d-block" style="width:250px; height:250px;">
+                        </div>
+                    </div>
+                </div>
+                <h4 class="mt-5">OOPS! Your cart is empty. Please add some items from the menu!</h4><br />
+                <a href="/" class="btn btn-outline-primary" style="margin-bottom:20px"><i class="mdi mdi-arrow-left me-1"></i> Browse Menu</a>
+            </div>
+        </div>
+    </div>
 
-                <div class="table-responsive">
-                    <table class="table mb-0">
-                        <tbody>
-                            <tr>
-                                <td>Grand Total :</td>
-                                <td id="cart-subtotal">₹ @Model.Total</td>
-                            </tr>
-                            <tr>
-                                <td>Tax(5%) :</td>
-                                <td id="cart-tax">₹ @Model.Tax</td>
-                            </tr>
-                            <tr class="bg-light">
-                                <th>Total :</th>
-                                <th id="cart-total">₹ @Model.GrandTotal</th>
-                            </tr>
-                        </tbody>
-                    </table>
+
+}
+<div class="modal fade" id="removeItemModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-body px-4 py-5 text-center">
+                <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="avatar-sm mb-4 mx-auto">
+                    <div class="avatar-title bg-primary text-primary bg-opacity-10 font-size-20 rounded-3">
+                        <i class="mdi mdi-trash-can-outline"></i>
+                    </div>
+                </div>
+                <input type="hidden" id="hiddenId" value="0">
+                <p class="text-muted font-size-16 mb-4">Are you sure you want to delete this Item?</p>
+                <div class="hstack gap-2 justify-content-center mb-0">
+                    <button type="button" class="btn btn-danger" id="close-removeProductModal" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="deleteItem()">Delete it</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+
 @section scripts {
+    <script src="~/assets/js/app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="~/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
     <script src="~/assets/js/cart.js"></script>
-    <script src="~/assets/js/app.js"></script>
-}   
+
+    <script type="text/javascript">
+        $(document).on("click", ".deleteModel", function () {
+            var Id = $(this).attr("data-id").trim();
+            $("#hiddenId").val(Id)
+            $('#removeItemModal').modal('show');
+        });
+        function deleteItem() {
+            var id = $("#hiddenId").val()
+            $.ajax({
+                type: 'POST',
+                url: "/Cart/DeleteItem/" + id,
+                success: function (result) {
+                    setTimeout(function () {
+                        window.location = "/Cart/Index/";
+                    }, 1000);
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+
+        }
+    </script>
+}

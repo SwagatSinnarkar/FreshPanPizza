@@ -43,5 +43,12 @@ namespace FreshPanPizza.Areas.User.Controllers
             var items = _catalogService.GetItems(itemType, categoryType);
             return View(items);
         }
+
+        public IActionResult SingleDashboard(int itemType, int categoryType)
+        {
+            var items = _catalogService.GetItems(itemType, categoryType);
+            return View(items);
+
+        }
     }
 }

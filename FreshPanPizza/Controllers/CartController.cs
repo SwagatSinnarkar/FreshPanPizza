@@ -85,5 +85,11 @@ namespace FreshPanPizza.Controllers
             int count = _cartService.GetCartCount(CartId);
             return Json(count);
         }
+
+        //CheckOut
+        public IActionResult CheckOut()
+        {
+            return View();  
+        }
     }
 }
