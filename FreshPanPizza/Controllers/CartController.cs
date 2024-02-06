@@ -1,4 +1,5 @@
 ﻿using FreshPanPizza.Entities;
+using FreshPanPizza.Helpers;
 using FreshPanPizza.Repositories.Models;
 using FreshPanPizza.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
@@ -9,7 +10,7 @@ namespace FreshPanPizza.Controllers
 {
     public class CartController : BaseController
     {
-        ICartService _cartService;      
+        ICartService _cartService;
 
         //If you look at here, when you`re browsing any website so usually website allow you to create the shopping cart and adding the items to that.
         //So same statergy here we`re going to follow. we`ll allow user to create the shopping cart.
@@ -40,14 +41,25 @@ namespace FreshPanPizza.Controllers
 
         public CartController(ICartService cartService, UserManager<User> userManager) : base(userManager)
         {
-            _cartService = cartService;        
+            _cartService = cartService;
         }
 
         public IActionResult Index()
         {
             //First, we need to create the Cart listing page where we`ll display the Cart info along with the CartItem.
             //So using with CartModel, we`ll get the Cart details here.
+
+            //If user is logged in, so, we need to get the logged in user shopping cart. 
+
+            //The LoggedIn Cart detail
             CartModel cart = _cartService.GetCartDetails(CartId);
+            if (CurrentUser != null && cart != null)
+            {
+                TempData.Set("Cart", cart);
+
+                //So we should actually update the Cart along with the loggedIn user userId. It`ll help us when user is loggedIn & directly he is doing the Payment.
+                _cartService.UpdateCart(cart.Id, CurrentUser.Id); 
+            }
             return View(cart);
         }
 
@@ -89,7 +101,18 @@ namespace FreshPanPizza.Controllers
         //CheckOut
         public IActionResult CheckOut()
         {
-            return View();  
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CheckOut(Address address)
+        {
+            //We can set the Address here in TempData. So, for TempData we can create an Extension class so that we can simplify the serialization & De-serialization
+            //Because C# list & the C# object directly if you try to assign to TempData it`ll create the Serialization issue. So by creating the TempData Extension which
+            //be useful for setting the object or list & it should be static class because Extension method are the part of the static class.
+            TempData.Set("Address", address);
+            return RedirectToAction("Index", "Payment");
         }
     }
 }
+

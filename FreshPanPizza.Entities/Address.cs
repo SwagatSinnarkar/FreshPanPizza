@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace FreshPanPizza.Entities
 {
@@ -18,11 +13,15 @@ namespace FreshPanPizza.Entities
             ZipCode = zipcode;
         }
 
+
         public int Id { get; set; }
+        [Display(Name = "Address")]
         public string Street { get; set; }
         public string Locality { get; set; }
+        [Display(Name = "Zip Code")]
         public string ZipCode { get; set; }
         public string City { get; set; }
+        [Display(Name = "Phone")]
         public string PhoneNumber { get; set; }
         public int UserId { get; set; }
     }

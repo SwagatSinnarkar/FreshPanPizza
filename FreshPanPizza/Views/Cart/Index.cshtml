@@ -1,6 +1,8 @@
 ﻿@model FreshPanPizza.Repositories.Models.CartModel
 @{
-    ViewBag.Title = "Cart"; 
+    ViewBag.Title = "Cart";
+    ViewBag.pTitle = "Basket";
+    ViewBag.pageTitle = "Cart";
     Layout = "~/Views/Shared/Layouts/CartLayout/_Cart_Layout_Navbar.cshtml";
 }
 
@@ -64,11 +66,11 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-sm-6">
-                            <a href="/ecommerce/products" class="btn btn-outline-primary">
+                            <a asp-action="Index" asp-controller="Cart" class="btn btn-outline-primary">
                                 <i class="mdi mdi-arrow-left me-1"></i> Continue Shopping
                             </a>
                         </div>
-                       @*  @if (CurentUser != null)
+                        @if (CurentUser != null)
                         {
                             <div class="col-sm-6">
                                 <div class="text-sm-end mt-2 mt-sm-0">
@@ -87,7 +89,7 @@
                                     </a>
                                 </div>
                             </div>
-                        } *@
+                        }
                     </div>
                 </div>
             </div>

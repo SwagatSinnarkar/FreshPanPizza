@@ -1,4 +1,11 @@
-﻿<header id="page-topbar">
+﻿@{
+    string userName = CurentUser.Name;
+    var names = userName.Split(' ');
+    string firstName = names[0];
+    string lastName = names[1];
+
+}
+<header id="page-topbar">
     <div class="navbar-header">
         <div class="d-flex">
             <!-- LOGO -->
@@ -34,38 +41,7 @@
                 </div>
             </form>
 
-            <div class="dropdown dropdown-mega d-lg-block ms-2 d-inline-block">
-                <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-                    <span key="t-megamenu">Menu</span>
-                </button>
-
-                <div class="dropdown-menu dropdown-megamenu">
-                    <div class="row">
-
-                        <div class="col-sm-8">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h5 class="font-size-14" key="t-ui-components">Our Ranges</h5>
-                                    <ul class="list-unstyled megamenu-list">
-                                        <li>
-                                            <a href="javascript:void(0);" key="t-lightbox">Veg Pizza</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);" key="t-lightbox">Non-veg Pizza</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);" key="t-lightbox">Beverages</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);" key="t-lightbox">Sides</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
         <div class="d-flex">
 
@@ -96,25 +72,18 @@
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle header-profile-user" src="~/assets/images/users/avatar-1.jpg"
                          alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ms-1" key="t-henry">@CurentUser.Name</span>
+                    <span class="d-none d-xl-inline-block ms-1" key="t-henry">@firstName</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item"> <i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">@CurentUser.Name</span></a>
+                    <a class="dropdown-item"> <i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">@firstName</span></a>
                     <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Profile</span></a>
-                        @* <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet">My Wallet</span></a>
-                    <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Settings</span></a>
-                    <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Lock screen</span></a> *@
+
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" asp-area="" asp-controller="Account" asp-action="LogOut"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
                 </div>
             </div>
-
-
-            @* <div class="dropdown d-inline-block">
-            <button type="button" class="btn header-item waves-effect">Login</button>
-            </div> *@
 
             <div class="dropdown d-none d-lg-inline-block ms-1">
                 <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
