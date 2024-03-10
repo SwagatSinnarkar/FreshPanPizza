@@ -4,8 +4,7 @@
     ViewBag.Title = "Receipt";
     ViewBag.pTitle = "Order Details Receipt";
     ViewBag.pageTitle = "Order";
-    Layout = "~/Views/Shared/Layouts/PizzaCustomLayouts/_horizontalCustom.cshtml";
-};
+    Layout = "~/Views/Shared/Orders/_OrderSuccessLayout.cshtml";
 }
 
 
@@ -119,7 +118,7 @@
                                 </tr>
                                 <tr>
                                     <td align="center">
-                                        <a asp-action="Index" asp-controller="Order" asp-area="User" class="btn btn-primary" style="margin: 0;">Go To Order Details</a>
+                                        <a asp-controller="Order" asp-action="Index" class="btn btn-primary" style="margin: 0;">Go To Order Details</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -207,10 +206,6 @@
 
 </html>
 
-
-@section scripts {
-    <script src="~/assets/js/app.js"></script>
-}
 
 @*
 <div>

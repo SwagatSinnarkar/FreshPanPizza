@@ -1,4 +1,5 @@
-﻿using FreshPanPizza.Services.Interfaces;
+﻿using FreshPanPizza.Interfaces;
+using FreshPanPizza.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FreshPanPizza.Areas.User.Controllers
@@ -7,7 +8,7 @@ namespace FreshPanPizza.Areas.User.Controllers
     {
         ICatalogService _catalogService;
 
-        public DashboardController(ICatalogService catalogService)
+        public DashboardController(ICatalogService catalogService, IUserAccessor userAccessor) : base(userAccessor)
         {
             _catalogService = catalogService;
         }

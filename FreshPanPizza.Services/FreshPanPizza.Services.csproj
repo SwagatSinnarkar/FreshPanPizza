@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FreshPanPizza.Entities\FreshPanPizza.Entities.csproj" />
     <ProjectReference Include="..\FreshPanPizza.Repositories\FreshPanPizza.Repositories.csproj" />
   </ItemGroup>
 

@@ -15,12 +15,13 @@ namespace FreshPanPizza.Controllers
 
         private readonly IOptions<RazorPayConfig> _razorPayConfig;
         private readonly IPaymentService _paymentService;
-        //private readonly IOrderService _orderService;        
+        private readonly IOrderService _orderService;        
 
-        public PaymentController(IPaymentService paymentService, IOptions<RazorPayConfig> razorPayConfig, IUserAccessor userAccessor) : base(userAccessor)
+        public PaymentController(IPaymentService paymentService, IOrderService orderService, IOptions<RazorPayConfig> razorPayConfig, IUserAccessor userAccessor) : base(userAccessor)
         {
             _razorPayConfig = razorPayConfig;
             _paymentService = paymentService;          
+            _orderService = orderService;
         }
 
         public IActionResult Index()
