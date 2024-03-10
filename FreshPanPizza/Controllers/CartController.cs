@@ -1,9 +1,11 @@
 ﻿using FreshPanPizza.Entities;
 using FreshPanPizza.Helpers;
+using FreshPanPizza.Interfaces;
 using FreshPanPizza.Repositories.Models;
 using FreshPanPizza.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Razorpay.Api;
 using System.Text.Json;
 
 namespace FreshPanPizza.Controllers
@@ -39,7 +41,7 @@ namespace FreshPanPizza.Controllers
         }
 
 
-        public CartController(ICartService cartService, UserManager<User> userManager) : base(userManager)
+        public CartController(ICartService cartService, IUserAccessor userAccessor) : base(userAccessor)
         {
             _cartService = cartService;
         }
@@ -110,7 +112,7 @@ namespace FreshPanPizza.Controllers
             //We can set the Address here in TempData. So, for TempData we can create an Extension class so that we can simplify the serialization & De-serialization
             //Because C# list & the C# object directly if you try to assign to TempData it`ll create the Serialization issue. So by creating the TempData Extension which
             //be useful for setting the object or list & it should be static class because Extension method are the part of the static class.
-            TempData.Set("Address", address);
+            TempData.Set("Address", address);       
             return RedirectToAction("Index", "Payment");
         }
     }

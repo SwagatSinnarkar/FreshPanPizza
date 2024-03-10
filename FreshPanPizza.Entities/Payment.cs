@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FreshPanPizza.Entities
 {
-    public class Payment
+    public class PaymentDetails
     {
         public string Id { get; set; }
         public string TransactionId { get; set; }

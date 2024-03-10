@@ -26,7 +26,7 @@ namespace FreshPanPizza.Repositories
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Address> Address { get; set; }
-        public DbSet<Payment> Payment { get; set; }                    
+        public DbSet<PaymentDetails> Payment { get; set; }                    
 
         //Define DB Connection String to do the Migration so that we can create the databases.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -53,17 +53,17 @@ namespace FreshPanPizza.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(LoginModel model, string returnUrl)
+        public IActionResult Login(LoginModel model)
         {
             if (ModelState.IsValid)
             {
                 var user = _authService.AuthenticateUser(model.Email, model.Password);
                 if (user != null)
                 {
-                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                    {
-                        return Redirect(returnUrl);
-                    }
+                    //if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    //{
+                    //    return Redirect(returnUrl);
+                    //}
 
                     if (user.Roles.Contains("Admin"))
                     {
